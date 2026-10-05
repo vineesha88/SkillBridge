@@ -1,82 +1,173 @@
-# SkillBridge — AI-Assisted RPL Assessment Tool
+# SkillBridge — AI-Assisted RPL Skill Assessment
 
-**SIH 2026 — Problem Statement 26242**
-AI-Assisted Skill Assessment Tool for Recognition of Prior Learning (RPL)
+SkillBridge is an AI-assisted digital platform designed to support
+Recognition of Prior Learning (RPL) assessment.
 
-SkillBridge helps assess workers who have gained skills through practical work, apprenticeships, or informal experience but may not have formal certification. AI assists with skill extraction, qualification mapping, evidence review, and scoring suggestions — but **the authorized assessor always makes the final decision**.
+It helps workers present their existing skills and experience, maps them
+to a relevant NSQF-aligned qualification, guides practical assessment,
+organizes evidence, supports standardized scoring, and helps a human
+assessor make the final certification recommendation.
 
-## Run locally
+> **Important:** SkillBridge does not automatically certify workers.
+> AI provides assistance and recommendations, while the human assessor
+> remains responsible for the final decision.
 
-```bash
-npm install
-npm run dev
-```
+---
 
-The app will open at `http://localhost:5173`.
+## Problem
 
-## Build
+Many workers develop valuable skills through informal work, apprenticeships,
+and on-the-job experience but may not have formal certification.
 
-```bash
-npm run build
-```
+RPL assessment can involve:
 
-This produces a `dist/` folder you can deploy anywhere.
+- Manual skill and experience verification
+- Inconsistent assessment between assessors
+- Difficulty organizing practical evidence
+- Repetitive scoring and documentation work
+- Limited visibility of the assessment process
+- Challenges in low-connectivity environments
 
-## Deploy to GitHub Pages
+SkillBridge aims to make this workflow more structured, evidence-based,
+and consistent.
 
-### Step 1 — Configure the base path
+---
 
-Open `vite.config.js` and replace `YOUR-REPOSITORY-NAME` with your actual repository name:
+## Our Solution
 
-```js
-base: '/skillbridge/'
-```
+SkillBridge follows an end-to-end assessment workflow:
 
-### Step 2 — Upload to GitHub
+**Experience → Qualification → Practical Tasks → Evidence → AI Assistance → Standardized Score → Human Decision**
 
-```bash
-git init
-git add .
-git commit -m "Initial SkillBridge MVP"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPOSITORY_URL
-git push -u origin main
-```
+### Core Workflow
 
-### Step 3 — Enable GitHub Pages
+1. **Worker Self-Declaration**
+   - Worker enters previous experience, skills, work history, and practical abilities.
 
-1. Go to your repository on GitHub.
-2. Click **Settings** → **Pages**.
-3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-4. The included workflow (`.github/workflows/deploy.yml`) will automatically build and deploy on every push to `main`.
+2. **AI-Assisted Skill Extraction**
+   - The system identifies relevant skills and experience from the worker's declaration.
 
-Your site will be live at:
-```
-https://YOUR-USERNAME.github.io/YOUR-REPOSITORY-NAME/
-```
+3. **NSQF Qualification Mapping**
+   - Extracted skills are compared with available qualification data.
+   - The system recommends the closest relevant qualification.
 
-## Tech Stack
+4. **Practical Assessment**
+   - The worker is evaluated through guided practical tasks.
+   - Tasks are linked to the selected qualification.
 
-- **Frontend:** React + JavaScript + Vite
-- **Icons:** lucide-react
-- **Data:** Local JSON / localStorage
-- **AI:** Demonstration / mock AI assistance layer (no external API)
-- **Deployment:** GitHub Pages
+5. **Evidence Capture**
+   - Photos/videos can be associated with practical assessment tasks.
+   - Evidence helps support the worker's claimed competency.
 
-## Project Structure
+6. **AI-Assisted Evidence Review**
+   - The system can highlight missing or potentially insufficient evidence.
+   - AI can provide observations and suggested scores for assessor review.
 
-```
-src/
-  components/    Reusable UI components
-  pages/         Main application pages
-  data/          Mock data (workers, qualifications, tasks, translations)
-  utils/         Scoring, storage, skill extraction helpers
-  hooks/         Custom React hooks
-  styles/        Global CSS theme
-  App.jsx        Main app with routing
-  main.jsx       Entry point
-```
+7. **Standardized Scoring**
+   - Common assessment rubrics are used to improve consistency between assessments.
 
-## Important Note
+8. **Human Assessor Verification**
+   - The assessor reviews evidence and AI suggestions.
+   - The assessor can accept, modify, or request re-demonstration.
 
-This is a **prototype MVP**. AI features are simulated using local logic. No real NSQF certification is issued. All assessment decisions are made by human assessors.
+9. **Competency Profile**
+   - The system generates a structured competency profile based on the assessment.
+
+10. **Certification Recommendation**
+    - A recommendation is generated for assessor review.
+    - The final decision remains with the authorized human assessor.
+
+---
+
+## Key Features
+
+### 1. AI-Assisted NSQF Mapping
+
+Maps worker experience and declared skills to the closest available
+NSQF-aligned qualification in the demonstration dataset.
+
+### 2. Practical Task Assessment
+
+Provides structured practical tasks so assessment follows a consistent
+process.
+
+### 3. Evidence-Based Assessment
+
+Allows evidence such as photos and videos to be associated with
+specific practical tasks.
+
+### 4. AI-Assisted Scoring
+
+Provides suggested observations and scores based on the assessment
+workflow.
+
+The assessor can modify the suggested score before making the final decision.
+
+### 5. Evidence Integrity Checks
+
+The system can help identify issues such as:
+
+- Missing evidence
+- Task/evidence mismatch
+- Important steps not visible
+- Duplicate or reused evidence
+- Need for re-demonstration
+
+These checks are assistance features and do not replace assessor judgment.
+
+### 6. Standardized Rubrics
+
+Uses common scoring criteria to support more consistent assessment
+across workers and assessors.
+
+### 7. Offline-Capable Workflow
+
+The MVP demonstrates local data storage and synchronization concepts
+for environments with limited connectivity.
+
+### 8. Multilingual Interface
+
+The worker-facing experience can support multiple languages,
+including English, Hindi, and Telugu.
+
+---
+
+## Demonstration Trade
+
+The current MVP demonstrates the workflow using an **Electrician**
+trade.
+
+Example practical assessment tasks include:
+
+- Identifying tools
+- Basic wiring
+- Installing a switch/socket
+- Troubleshooting a wiring fault
+
+The qualification and assessment data used in the MVP are demonstration
+data and are not presented as official government certification data.
+
+---
+
+## AI vs Human Decision
+
+SkillBridge follows a human-in-the-loop approach.
+
+```text
+Worker Experience
+       ↓
+AI Skill Extraction
+       ↓
+Qualification Mapping
+       ↓
+Practical Assessment
+       ↓
+Evidence Collection
+       ↓
+AI-Assisted Review
+       ↓
+Suggested Score
+       ↓
+Human Assessor Review
+       ↓
+Final Recommendation / Decision
